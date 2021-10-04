@@ -1,0 +1,35 @@
+
+<div class="container mt-2">
+    <app-add-student></app-add-student>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Class</th>
+                    <th scope="col">action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let student of students; let i = index;">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{student.name}}</td>
+                    <td>{{student.age}}</td>
+                    <td>
+                        <div class="justify-content">
+                          <a style="cursor: pointer;" [routerLink]="['/list/student/',student.id]"><i class="las la-edit"></i></a>
+                          <a style="cursor: pointer;" (click)="onDeleteStudent(student)"><i class="las la-trash"></i></a>
+                        </div>
+                    </td>
+                  </tr>          
+                </tbody>
+              </table>
+        </div>
+        <div class="col-md-6">
+            <router-outlet>
+            </router-outlet>
+        </div>
+    </div>
+</div>
